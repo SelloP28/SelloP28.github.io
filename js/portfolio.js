@@ -26,10 +26,10 @@ function toggleDarkMode() {
         new Chart(skillsChartCtx, {
             type: 'radar',
             data: {
-                labels: ['Python', 'C++', 'R', 'Machine Learning', 'Data Analysis', 'Statistics', 'Algorithms'],
+                labels: ['Python', 'C++', 'R', 'Machine Learning', 'Data Analysis', 'Probability', 'Algorithms'],
                 datasets: [{
                     label: 'Proficiency',
-                    data: [90, 75, 70, 85, 70, 80, 70], // Example data, adjust as needed
+                    data: [90, 75, 85, 70, 70, 80, 70], // Example data, adjust as needed
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
