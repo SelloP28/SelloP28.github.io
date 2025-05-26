@@ -21,14 +21,55 @@ function toggleDarkMode() {
   }));
   
   // Skills radar chart
-  const ctx = document.getElementById('skillsChart')?.getContext('2d');
-  if (ctx) {
-    new Chart(ctx, {
-      type: 'radar',
-      data: { labels: ['Python','C++','Probability','Data Science','AI/ML'], datasets: [{ label:'Skills', data:[80,70,85,60,50], fill:true }] },
-      options: { maintainAspectRatio:false, scales:{r:{beginAtZero:true,max:100}} }
-    });
-  }
+  const skillsChartCtx = document.getElementById('skillsChart');
+    if (skillsChartCtx) {
+        new Chart(skillsChartCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Python', 'C++', 'R', 'Machine Learning', 'Data Analysis', 'Statistics', 'Algorithms'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [90, 75, 70, 85, 70, 80, 70], // Example data, adjust as needed
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(54, 162, 235, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: {
+                            backdropColor: 'transparent' // For dark mode readability
+                        },
+                        pointLabels: {
+                             font: {
+                                size: 14 // Adjust as needed
+                            }
+                        }
+                    }
+                },
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            // This more specific font property overrides the global property
+                             font: {
+                                size: 14 // Adjust as needed
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
   
   // Mobile menu
   const menuButton = document.querySelector('.menu-button');
@@ -36,20 +77,51 @@ function toggleDarkMode() {
   if (window.innerWidth <= 768) navMenu.classList.remove('active');
   menuButton?.addEventListener('click', () => navMenu.classList.toggle('active'));
   
-  // Modals
-  document.querySelectorAll('.open-modal').forEach(btn => btn.addEventListener('click', () => {
-    document.getElementById(btn.dataset.modal)?.classList.remove('hidden');
-  }));
-  document.querySelectorAll('.close-modal').forEach(btn => btn.addEventListener('click', () => {
-    btn.closest('.modal')?.classList.add('hidden');
-  }));
-  
+// Adjust chart responsiveness
+const resizeChart = () => {
+  const chart = Chart.getChart('skillsChart');
+  if (chart) {
+      const aspectRatio = window.innerWidth < 768 ? 1 : 2;
+      chart.options.aspectRatio = aspectRatio;
+      chart.update();
+  }
+};
+window.addEventListener('resize', resizeChart);
+resizeChart();
+
+// Modal open/close functionality
+document.querySelectorAll('.open-modal').forEach(button => {
+  button.addEventListener('click', function () {
+      const modalId = this.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.remove('hidden');
+  });
+});
+document.querySelectorAll('.close-modal').forEach(button => {
+  button.addEventListener('click', function () {
+      const modal = this.closest('.fixed');
+      if (modal) modal.classList.add('hidden');
+  });
+});
+
+// Improve modal responsiveness
+document.querySelectorAll('.modal-content').forEach(modal => {
+  modal.style.maxHeight = '90vh';
+  modal.style.overflowY = 'auto';
+});
+
+// Touch-friendly event handling for modals
+document.addEventListener('touchstart', function(e) {
+  if (e.target.classList.contains('modal')) {
+      e.target.classList.add('hidden');
+  }
+});
+
   // PDF resume
-  const pdfContainer = document.getElementById('resume-container');
-  if (pdfContainer) {
-    const path = 'resources/S-Phakoe-CV.pdf';
-    if (!PDFObject.embed(path, pdfContainer))
-      pdfContainer.innerHTML = `<p>Failed to load resume. <a href="${path}">Download instead</a>.</p>`;
-    const adjust = () => { pdfContainer.style.height = window.innerWidth<768?'70vh':'85vh'; };
-    window.addEventListener('resize', adjust); adjust();
+  const resumeContainer = document.getElementById('resume-container');
+  if (resumeContainer && typeof PDFObject !== 'undefined') {
+      PDFObject.embed("resources/records/S-Phakoe-CV.pdf", "#resume-container", {
+          pdfOpenParams: { view: 'FitH' },
+          fallbackLink: "<p>This browser does not support embedded PDFs. Please <a href='resources/records/S-Phakoe-CV.pdf'>download the PDF</a> to view it.</p>"
+      });
   }
