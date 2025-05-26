@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="dark:bg-gray-900 dark:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sello Phakoe Portfolio</title>
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- PDFObject for embedding PDFs -->
+  <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.12/pdfobject.min.js"></script>
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="bg-white text-black font-sans">
+  <header class="fixed top-0 w-full bg-blue-500 text-white p-4 z-50">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+      <button class="menu-button p-2 lg:hidden" aria-label="Toggle menu">
+        <!-- hamburger icon -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+        </svg>
+      </button>
+      <nav class="nav-menu flex-1 flex justify-center space-x-6">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#courses" class="hover:underline">Certifications &amp; Courses</a>
+        <a href="#resume" class="hover:underline">Resume</a>
+        <a href="#blog" class="hover:underline">Blog</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+      <button id="darkModeToggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">
+        <!-- moon icon -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-blue-100 dark:bg-gray-800 px-4">
+      <div class="text-center">
+        <h1 class="text-6xl font-bold mb-4">Sello Phakoe</h1>
+        <p class="text-2xl">Data Scientist | AI/ML Engineer</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">About Me</h2>
+      <p class="mb-4">
+        I'm a second-year Applied Mathematics and Computer Science student at UNISA, Pretoria, South Africa,
+        with strong foundations in applied mathematics, algorithms, probability, statistics, Python, C++, and R. I'm passionate about data science,
+        analytics, and AI/ML, aiming for entry-level roles to contribute and grow.
+      </p>
+      <h3 class="text-2xl font-semibold mb-2">Education</h3>
+      <ul class="list-disc pl-5 mb-4">
+        <li>BSc in Applied Mathematics and Computer Science (UNISA, Expected 2028)
+          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="academic-record-unisa">View Academic Record</button>
+        </li>
+        <li>BSc in Physics (University of Pretoria, 2021, incomplete)
+          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="academic-record-up">View Academic Record</button>
+        </li>
+        <li>N3 &amp; N4: Electrical Engineering (Light Current) (Damelin, 2013)
+          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="academic-record-damelin">View Academic Record</button>
+        </li>
+        <li>Matric (Germiston High School, 2012)
+          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="matric-certificate">View School Report</button>
+        </li>
+      </ul>
+
+      <!-- Modals -->
+      <div id="academic-record-unisa" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-4 rounded w-3/4 h-3/4">
+          <button class="close-modal float-right text-black">Close</button>
+          <div class="pdf-container w-full h-full"></div>
+          <script>PDFObject.embed("resources/records/Unisa Academic Record.pdf", "#academic-record-unisa .pdf-container");</script>
+        </div>
+      </div>
+      <div id="academic-record-up" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-4 rounded w-3/4 h-3/4">
+          <button class="close-modal float-right text-black">Close</button>
+          <div class="pdf-container w-full h-full"></div>
+          <script>PDFObject.embed("resources/records/UP_ACAD_RCD.pdf", "#academic-record-up .pdf-container");</script>
+        </div>
+      </div>
+      <div id="academic-record-damelin" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-4 rounded w-3/4 h-3/4">
+          <button class="close-modal float-right text-black">Close</button>
+          <div class="pdf-container w-full h-full"></div>
+          <script>PDFObject.embed("resources/records/up_record.pdf", "#academic-record-damelin .pdf-container");</script>
+        </div>
+      </div>
+      <div id="matric-certificate" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-4 rounded w-3/4 h-3/4">
+          <button class="close-modal float-right text-black">Close</button>
+          <div class="pdf-container w-full h-full"></div>
+          <script>PDFObject.embed("resources/records/Matric Certificate.pdf", "#matric-certificate .pdf-container");</script>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-semibold mb-2">Skills</h3>
+      <div class="h-64 w-full max-w-md mx-auto">
+        <canvas id="skillsChart"></canvas>
+      </div>
+      <div class="mt-4 flex space-x-4">
+        <a href="https://github.com/SelloP28" class="text-blue-500 hover:underline">GitHub</a>
+        <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" class="text-blue-500 hover:underline">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Experience/Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-gray-700 p-6 rounded">
+          <h3 class="text-2xl font-semibold mb-2">Zosi Group Corporate Website</h3>
+          <p class="mb-2">Designed and developed the corporate website with enhanced functionality, implementing responsive designs and APIs.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Technologies: HTML, CSS, JavaScript, APIs</p>
+          <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Details</button>
+        </div>
+        <div class="bg-white dark:bg-gray-700 p-6 rounded opacity-50">
+          <h3 class="text-2xl font-semibold mb-2">Future Project</h3>
+          <p class="mb-2">Placeholder for future projects.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Technologies: TBD</p>
+          <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-not-allowed" disabled>View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Courses Section -->
+    <section id="courses" class="py-20 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Certifications & Courses</h2>
+      <!-- Course cards omitted for brevity; repeat pattern with resources/... paths -->
+       <!-- CS50 Courses Group -->
+<div class="mb-12">
+    <h3 class="text-2xl font-bold mb-4">CS50 Courses</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">CS50: Introduction to Python Programming</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 50%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-cs50-python">
+          View More
+        </button>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">CS50: Introduction to Programming with R</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 40%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-cs50-r">
+          View More
+        </button>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">CS50: Web Programming with Python &amp; JavaScript</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-cs50-web">
+          View More
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Other Courses Group -->
+  <div class="mb-12">
+    <h3 class="text-2xl font-bold mb-4">Other Courses</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">CS50’s Introduction to AI with Python</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-cs50-ai">
+          View More
+        </button>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">Intro to Deep Learning with TensorFlow</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">MIT Open Learning, 2025</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-mit-dl">
+          View More
+        </button>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">Intro to Probability &amp; Statistics</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">MIT Open Learning, 2025</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 20%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-mit-prob">
+          View More
+        </button>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">Introduction to Machine Learning</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Coursera (Stanford), In Progress</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-stanford-ml">
+          View More
+        </button>
+      </div>
+  
+      <div class="bg-white dark:bg-gray-700 p-6 rounded">
+        <h4 class="text-xl font-semibold mb-2">Introduction to Robotics</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Coursera (Stanford), In Progress</p>
+        <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                data-modal="course-details-stanford-robo">
+          View More
+        </button>
+      </div>
+    </div>
+  </div>
+  
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Curriculum Vitae</h2>
+      <div id="resume-container" class="mb-4"></div>
+      <a href="resources/S-Phakoe-CV.pdf" download class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Download Full Resume</a>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Blog</h2>
+      <ul class="list-disc pl-5">
+        <li><a href="blog/post1.html" class="text-blue-500 hover:underline">AI Developments in 2025</a></li>
+        <li><a href="blog/post2.html" class="text-blue-500 hover:underline">Coming soon...</a></li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6">Contact</h2>
+      <p>Email: u13238940@tuks.co.za</p>
+      <div class="mt-4 flex space-x-4">
+        <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" class="text-blue-500 hover:underline">LinkedIn</a>
+        <a href="https://x.com/" class="text-blue-500 hover:underline">X</a>
+      </div>
+      <p class="mt-4">I'm open to discussing opportunities. Feel free to reach out!</p>
+    </section>
+  </main>
+
+  <footer class="py-4 bg-gray-200 dark:bg-gray-700 text-center">
+    <p>© 2025 Sello Phakoe. All rights reserved.</p>
+  </footer>
+
+  <!-- Custom scripts -->
+  <script src="js/portfolio.js"></script>
+</body>
+</html>
