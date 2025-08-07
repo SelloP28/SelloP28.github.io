@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sello Phakoe Portfolio</title>
+  <title>Sello Phakoe - Data Scientist | AI/ML Engineer</title>
+  <meta name="description" content="Portfolio of Sello Phakoe, Data Scientist and AI/ML Engineer">
+  <link rel="favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+  
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- PDFObject for embedding PDFs -->
@@ -13,27 +16,34 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="bg-white text-black font-sans">
-  <header class="fixed top-0 w-full bg-blue-500 text-white p-4 z-50">
-    <div class="flex justify-between items-center max-w-6xl mx-auto">
-      <button class="menu-button p-2 lg:hidden" aria-label="Toggle menu">
-        <!-- hamburger icon -->
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans">
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50">
+    <div class="flex justify-between items-center max-w-6xl mx-auto px-4 py-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gray-900 dark:bg-white rounded-lg flex items-center justify-center">
+          <span class="text-white dark:text-gray-900 font-bold text-lg">SP</span>
+        </div>
+        <span class="font-semibold text-lg hidden md:block">Sello Phakoe</span>
+      </div>
+      
+      <button class="menu-button p-2 lg:hidden hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" aria-label="Toggle menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
         </svg>
       </button>
-      <nav class="nav-menu flex-1 flex justify-center space-x-6">
-        <a href="#home" class="hover:underline">Home</a>
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#courses" class="hover:underline">Certifications &amp; Courses</a>
-        <a href="#resume" class="hover:underline">Resume</a>
-        <a href="#blog" class="hover:underline">Blog</a>
-        <a href="#contact" class="hover:underline">Contact</a>
+      
+      <nav class="nav-menu flex-1 flex justify-center space-x-8 hidden lg:flex">
+        <a href="#home" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Home</a>
+        <a href="#about" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">About</a>
+        <a href="#projects" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Projects</a>
+        <a href="#courses" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Education</a>
+        <a href="#resume" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Resume</a>
+        <a href="#contact" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Contact</a>
       </nav>
-      <button id="darkModeToggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">
-        <!-- moon icon -->
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      
+      <button id="darkModeToggle" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
         </svg>
       </button>
@@ -41,382 +51,382 @@
   </header>
 
   <main class="pt-20">
-    <!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center bg-blue-100 dark:bg-gray-800 px-4">
-      <div class="text-center">
-        <h1 class="text-6xl font-bold mb-4">Sello Phakoe</h1>
-        <p class="text-2xl">Data Scientist | AI/ML Engineer</p>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800 px-4">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Professional Profile Image Placeholder -->
+        <div class="w-32 h-32 mx-auto mb-8 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
+          <svg class="w-16 h-16 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+          Sello Phakoe
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+          Data Scientist | AI/ML Engineer
+        </p>
+        <p class="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+          Transforming data into insights with Python, Machine Learning, and Advanced Analytics
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#projects" class="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-8 py-3 rounded-lg transition-colors font-medium">
+            View My Work
+          </a>
+          <a href="#contact" class="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-3 rounded-lg transition-colors font-medium">
+            Get In Touch
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">About Me</h2>
-      <p class="mb-4">
-        I'm a second-year Applied Mathematics and Computer Science student at UNISA, Pretoria, South Africa,
-        with strong foundations in applied mathematics, algorithms, probability, statistics, Python, C++, and R. I'm passionate about data science,
-        analytics, and AI/ML, aiming for entry-level roles to contribute and grow.
-      </p>
-      <h3 class="text-2xl font-semibold mb-2">Education</h3>
-      <ul class="list-disc pl-5 mb-4">
-        <li>BSc in Applied Mathematics and Computer Science (UNISA, Expected 2028)
-          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="academic-record-unisa">View Academic Record</button>
-        </li>
-        <li>BSc in Physics (University of Pretoria, 2021, incomplete)
-          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="academic-record-up">View Academic Record</button>
-        </li>
-        <li>N3 &amp; N4: Electrical Engineering (Light Current) (Damelin, 2013)
-          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="academic-record-damelin">View Academic Record</button>
-        </li>
-        <li>Matric (Germiston High School, 2012)
-          <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="matric-certificate">View School Report</button>
-        </li>
-      </ul>
-
-      <!-- Modals -->
-      <div id="academic-record-unisa" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4">
-          <button class="close-modal float-right text-black">Close</button>
-          <div class="pdf-container w-full h-full"></div>
-          <script>PDFObject.embed("resources/records/Unisa Academic Record.pdf", "#academic-record-unisa .pdf-container");</script>
-        </div>
-      </div>
-      <div id="academic-record-up" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4">
-          <button class="close-modal float-right text-black">Close</button>
-          <div class="pdf-container w-full h-full"></div>
-          <script>PDFObject.embed("resources/records/UP_ACAD_RCD.pdf", "#academic-record-up .pdf-container");</script>
-        </div>
-      </div>
-      <div id="academic-record-damelin" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4">
-          <button class="close-modal float-right text-black">Close</button>
-          <div class="pdf-container w-full h-full"></div>
-          <script>PDFObject.embed("resources/records/up_record.pdf", "#academic-record-damelin .pdf-container");</script>
-        </div>
-      </div>
-      <div id="matric-certificate" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4">
-          <button class="close-modal float-right text-black">Close</button>
-          <div class="pdf-container w-full h-full"></div>
-          <script>PDFObject.embed("resources/records/Matric Certificate.pdf", "#matric-certificate .pdf-container");</script>
-        </div>
-      </div>
-
-      <!--Skills Chart-->
-      <h3 class="text-2xl font-semibold mb-2">Skills</h3>
-      <div class="h-64 w-full max-w-md mx-auto">
-        <canvas id="skillsChart"></canvas>
-      </div>
-
-      <div class="mt-6 text-center"> <!-- Overall container, centered text -->
-        <p class="mb-4 text-lg font-medium text-gray-800 dark:text-gray-200">Let's Connect!</p> <!-- Engaging call to action -->
-        
-        <div class="flex justify-center space-x-5 mb-4"> <!-- Container for icons, centered with spacing -->
-          <!-- GitHub Link -->
-          <a href="https://github.com/SelloP28" target="_blank" rel="noopener noreferrer" 
-             class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" 
-             aria-label="Sello Phakoe's GitHub Profile">
-            <!-- GitHub SVG Icon (28x28px) -->
-            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </a>
-          
-          <!-- LinkedIn Link -->
-          <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" target="_blank" rel="noopener noreferrer" 
-             class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" 
-             aria-label="Sello Phakoe's LinkedIn Profile">
-            <!-- LinkedIn SVG Icon (28x28px) -->
-            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </a>
-        </div>
-        
-        <!-- Follow-up text, integrated into the centered block -->
-        <p class="text-gray-700 dark:text-gray-300">
-          Feel free to explore my profiles and connect!
-        </p>
+    <section id="about" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">About Me</h2>
+        <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
       </div>
       
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            I'm a passionate second-year Applied Mathematics and Computer Science student at UNISA, Pretoria, with a strong foundation in mathematical modeling, statistical analysis, and programming.
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            With expertise in Python, C++, and R, I specialize in developing machine learning models and conducting data analysis. I'm actively seeking entry-level opportunities in data science and AI/ML.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex space-x-4 pt-6">
+            <a href="https://github.com/SelloP28" target="_blank" rel="noopener noreferrer" 
+               class="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" target="_blank" rel="noopener noreferrer" 
+               class="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <!-- Skills Chart -->
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold mb-6 text-center text-gray-900 dark:text-white">Technical Skills</h3>
+            <div class="h-80 w-full">
+              <canvas id="skillsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Education Section -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-semibold mb-8 text-center text-gray-900 dark:text-white">Education</h3>
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">BSc in Applied Mathematics and Computer Science</h4>
+                <p class="text-gray-600 dark:text-gray-300">University of South Africa (UNISA)</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Expected 2028</p>
+              </div>
+              <button class="open-modal mt-4 md:mt-0 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg transition-colors" data-modal="academic-record-unisa">
+                View Record
+              </button>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+              <div>
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">BSc in Physics (Incomplete)</h4>
+                <p class="text-gray-600 dark:text-gray-300">University of Pretoria</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">2021</p>
+              </div>
+              <button class="open-modal mt-4 md:mt-0 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg transition-colors" data-modal="academic-record-up">
+                View Record
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic Record Modals -->
+      <div id="academic-record-unisa" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-11/12 md:w-3/4 h-3/4 max-w-4xl">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">UNISA Academic Record</h3>
+            <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">&times;</button>
+          </div>
+          <div class="pdf-container w-full h-full bg-gray-100 dark:bg-gray-700 rounded"></div>
+        </div>
+      </div>
+
+      <div id="academic-record-up" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-11/12 md:w-3/4 h-3/4 max-w-4xl">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">UP Academic Record</h3>
+            <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">&times;</button>
+          </div>
+          <div class="pdf-container w-full h-full bg-gray-100 dark:bg-gray-700 rounded"></div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">Experience/Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white dark:bg-gray-700 p-6 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Zosi Group Corporate Website</h3>
-          <p class="mb-2">Designed and developed the corporate website with enhanced functionality, implementing responsive designs and APIs.</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Technologies: HTML, CSS, JavaScript, APIs</p>
-          <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Details</button>
+    <section id="projects" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Featured Projects</h2>
+          <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
         </div>
-        <div class="bg-white dark:bg-gray-700 p-6 rounded opacity-50">
-          <h3 class="text-2xl font-semibold mb-2">Future Project</h3>
-          <p class="mb-2">Placeholder for future projects.</p>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Technologies: TBD</p>
-          <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-not-allowed" disabled>View Details</button>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Zosi Group Project -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-6 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Zosi Group Corporate Website</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              Designed and developed a comprehensive corporate website featuring enhanced functionality, responsive design, and seamless API integration.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">HTML5</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">CSS3</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">JavaScript</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">APIs</span>
+            </div>
+            <button class="w-full bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg transition-colors">
+              View Project
+            </button>
+          </div>
+
+          <!-- Data Science Project Placeholder -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-6 hover:shadow-lg transition-shadow opacity-75">
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Machine Learning Portfolio</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+              A collection of machine learning projects demonstrating proficiency in data preprocessing, model development, and statistical analysis.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">Python</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">Scikit-learn</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">Pandas</span>
+            </div>
+            <button class="w-full bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+              Coming Soon
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-      <!-- Certifications & Courses Section -->
-      <section id="courses" class="py-20 px-4 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Certifications & Courses</h2>
-        <!-- CS50 Courses Group -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold mb-4">CS50 Courses</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white dark:bg-gray-700 p-6 rounded">
-              <h4 class="text-xl font-semibold mb-2">CS50: Introduction to Python Programming</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
-              <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 50%"></div>
+    <!-- Certifications & Courses Section -->
+    <section id="courses" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Certifications & Courses</h2>
+        <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
+      </div>
+
+      <!-- Course Categories -->
+      <div class="space-y-12">
+        <!-- Harvard CS50 -->
+        <div>
+          <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
+            <span class="w-8 h-8 bg-red-600 text-white rounded mr-3 flex items-center justify-center text-sm font-bold">H</span>
+            Harvard CS50 Courses
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Python Programming</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">In Progress</p>
+              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                <div class="bg-gray-600 h-2 rounded-full" style="width: 50%"></div>
               </div>
-              <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                      data-modal="course-details-cs50-python">
-                View More
-              </button>
             </div>
-        
-            <div class="bg-white dark:bg-gray-700 p-6 rounded">
-              <h4 class="text-xl font-semibold mb-2">CS50: Introduction to Programming with R</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
-              <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 40%"></div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Programming with R</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">In Progress</p>
+              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                <div class="bg-gray-600 h-2 rounded-full" style="width: 40%"></div>
               </div>
-              <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                      data-modal="course-details-cs50-r">
-                View More
-              </button>
             </div>
-        
-            <div class="bg-white dark:bg-gray-700 p-6 rounded">
-              <h4 class="text-xl font-semibold mb-2">CS50: Introduction to Artificial Intelligence with Python</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Harvard Online, 2025</p>
-              <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">AI with Python</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Starting Soon</p>
+              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                <div class="bg-gray-600 h-2 rounded-full" style="width: 0%"></div>
               </div>
-              <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                      data-modal="course-details-cs50-ai">
-                View More
-              </button>
             </div>
           </div>
         </div>
-        
-        <!-- Kaggle Courses Group -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold mb-4">Kaggle Courses</h3>
+
+        <!-- Kaggle Learn -->
+        <div>
+          <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
+            <span class="w-8 h-8 bg-blue-500 text-white rounded mr-3 flex items-center justify-center text-sm font-bold">K</span>
+            Kaggle Learn
+          </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="bg-white dark:bg-gray-700 p-6 rounded">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Machine Learning</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">Kaggle, 2025</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 100%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-kaggle-ml">View More</button>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 border-l-4 border-l-green-500">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-semibold text-gray-900 dark:text-white">Machine Learning</h4>
+                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded-full">Completed</span>
               </div>
-              <div class="bg-white dark:bg-gray-700 p-6 rounded">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Deep Learning</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">Kaggle, 2025</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 100%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-kaggle-dl">View More</button>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">2025</p>
+              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
               </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 border-l-4 border-l-green-500">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-semibold text-gray-900 dark:text-white">Deep Learning</h4>
+                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded-full">Completed</span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">2025</p>
+              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-  
-      <!-- MITOCW Courses Group -->
-      <div class="mb-12">
-          <h3 class="text-2xl font-bold mb-4">MITOCW Courses</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="bg-white dark:bg-gray-700 p-6 rounded">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Probability & Statistics</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">MIT-18.05, in-progress</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 20%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-mit-prob">View More</button>
-              </div>
-              <!--div class="bg-white dark:bg-gray-700 p-6 rounded">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Deep Learning</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">MIT-6S191</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 10%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-mit-dl">View More</button>
-              </div-->
-              <div class="bg-white dark:bg-gray-700 p-6 rounded">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Algorithms</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">MIT-6.006, in-progress</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 10%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-mit-algo">View More</button>
-              </div>
-              <!-- The Stanford Courses Group was incorrectly nested here. It has been moved out. -->
-          </div> <!-- This closes the MITOCW grid -->
-      </div> <!-- This closes the MITOCW mb-12 container -->
-        
-      <!-- Stanford Courses Group -->
-      <div class="mb-12"> <!-- This is the main container for Stanford courses -->
-          <h3 class="text-2xl font-bold mb-4">Stanford Engineering Everywhere Courses</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> <!-- This is the grid for Stanford course cards -->
-              <div class="bg-white dark:bg-gray-700 p-6 rounded opacity-50">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Machine Learning</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">CS229, Commencing soon...</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-stanford-ml">View More</button>
-              </div>
-              <div class="bg-white dark:bg-gray-700 p-6 rounded opacity-50">
-                  <h4 class="text-xl font-semibold mb-2">Introduction to Robotics</h4>
-                  <p class="text-sm text-gray-600 dark:text-gray-300">CS223A, Commencing soon...</p>
-                  <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
-                      <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                  </div>
-                  <button class="open-modal mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" data-modal="course-details-stanford-robo">View More</button>
-              </div>
-          </div> <!-- This closes the Stanford grid -->
-      </div> <!-- This closes the Stanford mb-12 container -->
     </section>
 
-    <!-- Course Details Modals -->
-    <div id="course-details-cs50-python" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">CS50: Introduction to Python Programming</h3>
-            <p>This course covers the basics of Python programming, including data structures, functions, and object-oriented programming.</p>
-            <p>Current progress: 50%</p>
-        </div>
-    </div>
-    <div id="course-details-cs50-r" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">CS50: Introduction to Programming with R</h3>
-            <p>This course introduces programming concepts using R, focusing on data analysis and visualization.</p>
-            <p>Current progress: 30%</p>
-        </div>
-    </div>
-    <div id="course-details-cs50-ai" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">CS50: Introduction to Artificial Intelligence with Python</h3>
-            <p>This course explores AI concepts and algorithms implemented in Python.</p>
-            <p>Current progress: 0%</p>
-        </div>
-    </div>
-    <!--div id="course-details-cs50-web" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">CS50: Web Programming with Python & JavaScript</h3>
-            <p>This course teaches web development using Python and JavaScript frameworks.</p>
-            <p>Current progress: 0%</p>
-        </div>
-    </div-->
-    <div id="course-details-kaggle-ml" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Machine Learning</h3>
-            <p>This course provides an introduction to machine learning concepts, including supervised and unsupervised learning, and practical applications using Python.</p>
-            <h4 class="text-xl font-semibold mt-4">Certificate of Completion</h4>
-            <div class="certificate-container mt-4">
-                <img src="{% static 'Sello Phakoe - Intro to Machine Learning.png' %}" alt="Machine Learning Certificate" class="max-w-full h-auto mx-auto">
-            </div>
-        </div>
-    </div>
-    <div id="course-details-kaggle-dl" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Deep Learning</h3>
-            <p>This course covers deep learning fundamentals, including neural networks and their applications.</p>
-            <h4 class="text-xl font-semibold mt-4">Certificate of Completion</h4>
-            <div class="pdf-container w-full h-96"></div>
-            <script>
-                PDFObject.embed("{% static 'certificates/kaggle_dl.pdf' %}", "#course-details-kaggle-dl .pdf-container");
-            </script>
-        </div>
-    </div>
-    <div id="course-details-mit-prob" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Probability & Statistics</h3>
-            <p>This course introduces probability and statistical methods for data analysis.</p>
-            <p>Current progress: 20%</p>
-        </div>
-    </div>
-    <!--div id="course-details-mit-dl" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Deep Learning</h3>
-            <p>This MIT course explores deep learning techniques and implementations.</p>
-            <p>Current progress: 10%</p>
-        </div>
-    </div-->
-    <div id="course-details-mit-algo" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Algorithms</h3>
-            <p>This MIT course explores algorithms and their implementations.</p>
-            <p>Current progress: 10%</p>
-        </div>
-    </div>
-    <div id="course-details-stanford-ml" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Machine Learning</h3>
-            <p>This course covers machine learning concepts and algorithms.</p>
-            <p>Current progress: 0%</p>
-        </div>
-    </div>
-    <div id="course-details-stanford-robo" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-        <div class="bg-white p-4 rounded w-3/4 h-3/4 overflow-auto">
-            <button class="close-modal float-right text-black">Close</button>
-            <h3 class="text-2xl font-bold mb-4">Introduction to Robotics</h3>
-            <p>This course covers an introduction to robotics.</p>
-            <p>Current progress: 0%</p>
-        </div>
-    </div>
-  
     <!-- Resume Section -->
-        <section id="resume" class="py-20 px-4 max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold mb-6">Curriculum Vitae</h2>
-          <!-- MODIFIED LINE: Added w-full, h-[800px] (adjust height as needed) and a border -->
-          <div id="resume-container" class="mb-4 w-full h-[800px] border border-gray-300 dark:border-gray-600">
-            <!-- PDF will be embedded here by JavaScript -->
+    <section id="resume" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Resume</h2>
+          <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-6">
+          <div id="resume-container" class="w-full h-[800px] bg-gray-100 dark:bg-gray-600 rounded-lg">
+            <!-- PDF will be embedded here -->
           </div>
-          <a href="resources/records/S-Phakoe-CV.pdf" download class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Download Full Resume</a>
-        </section>
-    
-
-    <!-- Blog Section -->
-    <section id="blog" class="py-20 px-4 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">Blog</h2>
-      <ul class="list-disc pl-5">
-        <li><a href="blog/post1.html" class="text-blue-500 hover:underline">AI Developments in 2025</a></li>
-        <li><a href="blog/post2.html" class="text-blue-500 hover:underline">Coming soon...</a></li>
-      </ul>
+          
+          <div class="flex justify-center mt-6">
+            <a href="resources/records/S-Phakoe-CV.pdf" download 
+               class="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg transition-colors font-medium">
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">Contact</h2>
-      <p>Email: u13238940@tuks.co.za</p>
-      <div class="mt-4 flex space-x-4">
-        <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" class="text-blue-500 hover:underline">LinkedIn</a>
-        <a href="https://x.com/" class="text-blue-500 hover:underline">X</a>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Get In Touch</h2>
+        <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
       </div>
-      <p class="mt-4">I'm open to discussing opportunities. Feel free to reach out!</p>
+
+      <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-8">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Contact Information</h3>
+            
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white">Email</h4>
+                <a href="mailto:u13238940@tuks.co.za" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                  u13238940@tuks.co.za
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900 dark:text-white">Location</h4>
+                <p class="text-gray-600 dark:text-gray-400">Pretoria, South Africa</p>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <div class="flex items-center space-x-2 mb-2">
+                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span class="text-sm font-medium text-green-700 dark:text-green-400">Available for opportunities</span>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                Currently seeking entry-level positions in data science and machine learning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Send a Message</h3>
+            <form class="space-y-4" id="contact-form">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                <input type="text" id="name" name="name" required 
+                       class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors">
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors">
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                <textarea id="message" name="message" rows="4" required 
+                          class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors resize-none"></textarea>
+              </div>
+              
+              <button type="submit" 
+                      class="w-full bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 py-3 px-6 rounded-lg transition-colors font-medium">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="py-4 bg-gray-200 dark:bg-gray-700 text-center">
-    <p>© 2025 Sello Phakoe. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="https://github.com/SelloP28" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="text-gray-400">&copy; 2025 Sello Phakoe. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- Custom scripts -->
