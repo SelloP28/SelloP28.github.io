@@ -1,435 +1,522 @@
 <!DOCTYPE html>
-<html lang="en" class="dark:bg-gray-900 dark:text-white">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sello Phakoe - Data Scientist | AI/ML Engineer</title>
-  <meta name="description" content="Portfolio of Sello Phakoe, Data Scientist and AI/ML Engineer">
-  <link rel="favicon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-  
-  <!-- Tailwind via CDN -->
+  <title>Sello Phakoe - Data Scientist & AI/ML Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- PDFObject for embedding PDFs -->
-  <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.12/pdfobject.min.js"></script>
-  <!-- Chart.js for charts -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans antialiased">
+
   <!-- Header -->
-  <header class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50">
-    <div class="flex justify-between items-center max-w-6xl mx-auto px-4 py-4">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-gray-900 dark:bg-white rounded-lg flex items-center justify-center">
-          <span class="text-white dark:text-gray-900 font-bold text-lg">SP</span>
+  <header class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex-center text-white font-bold text-xl transition-transform group-hover:scale-105">
+          SP
         </div>
-        <span class="font-semibold text-lg hidden md:block">Sello Phakoe</span>
-      </div>
-      
-      <button class="menu-button p-2 lg:hidden hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" aria-label="Toggle menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
-        </svg>
-      </button>
-      
-      <nav class="nav-menu flex-1 flex justify-center space-x-8 hidden lg:flex">
-        <a href="#home" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Home</a>
-        <a href="#about" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">About</a>
-        <a href="#projects" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Projects</a>
-        <a href="#courses" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Education</a>
-        <a href="#resume" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Resume</a>
-        <a href="#contact" class="hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-300">Contact</a>
+        <span class="text-xl font-semibold tracking-tight">Sello Phakoe</span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="nav-menu hidden lg:flex items-center gap-6 text-sm font-medium">
+        <a href="#home" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+        <a href="#about" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">About</a>
+        <a href="#experience" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
+        <a href="#projects" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+        <a href="#education" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Education</a>
+        <a href="#resume" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Resume</a>
+        <a href="#contact" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
       </nav>
-      
-      <button id="darkModeToggle" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-      </button>
+
+      <!-- Dark Mode Toggle & Menu Button -->
+      <div class="flex items-center gap-4">
+        <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
+          <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+        <button class="menu-button lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Open menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="pt-20">
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800 px-4">
-      <div class="text-center max-w-4xl mx-auto">
-        <!-- Professional Profile Image Placeholder -->
-        <div class="w-32 h-32 mx-auto mb-8 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
-          <svg class="w-16 h-16 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
-        </div>
-        
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
-          Sello Phakoe
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-          Data Scientist | AI/ML Engineer
-        </p>
-        <p class="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-          Transforming data into insights with Python, Machine Learning, and Advanced Analytics
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#projects" class="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-8 py-3 rounded-lg transition-colors font-medium">
-            View My Work
-          </a>
-          <a href="#contact" class="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-3 rounded-lg transition-colors font-medium">
-            Get In Touch
-          </a>
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center pt-20 pb-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left animate-on-scroll">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Sello Phakoe</h1>
+        <p class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Data Scientist & AI/ML Engineer</p>
+        <p class="text-lg mb-4 text-gray-600 dark:text-gray-300">Applied Mathematics & Computer Science Student</p>
+        <p class="text-base mb-8 max-w-xl mx-auto lg:mx-0">Passionate about transforming complex data into actionable insights using Python, Machine Learning, and Advanced Statistical Methods. Currently seeking opportunities to apply my expertise in real-world data science challenges, with a focus on renewable energy and PV systems.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#projects" class="btn bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md hover:shadow-lg">View My Work <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+          <a href="#contact" class="btn border border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20">Get In Touch <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
         </div>
       </div>
-    </section>
+      <div class="profile-wrap hidden lg:block relative animate-on-scroll">
+        <!-- Placeholder for profile image or graphic -->
+        <div class="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800 flex-center">
+          <div class="w-72 h-72 rounded-full bg-white dark:bg-gray-800 shadow-xl"></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center animate-on-scroll">
+        <div class="p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Years Experience</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Completed Courses</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">3+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Projects</div>
+        </div>
+        <div class="p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 px-4 max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">About Me</h2>
-        <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
-      </div>
-      
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
-          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            I'm a passionate second-year Applied Mathematics and Computer Science student at UNISA, Pretoria, with a strong foundation in mathematical modeling, statistical analysis, and programming.
-          </p>
-          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            With expertise in Python, C++, and R, I specialize in developing machine learning models and conducting data analysis. I'm actively seeking entry-level opportunities in data science and AI/ML.
-          </p>
-          
-          <!-- Social Links -->
-          <div class="flex space-x-4 pt-6">
-            <a href="https://github.com/SelloP28" target="_blank" rel="noopener noreferrer" 
-               class="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              <span>GitHub</span>
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-6 text-gray-600 dark:text-gray-300 animate-on-scroll">
+          <p>I'm a dedicated second-year Applied Mathematics and Computer Science student at UNISA, Pretoria, with a passion for leveraging mathematical principles and computational methods to solve complex real-world problems, particularly in renewable energy and PV systems.</p>
+          <p>My expertise spans Python programming, machine learning algorithms, statistical analysis, and data visualization. I'm particularly interested in the intersection of mathematics and artificial intelligence, where I can apply theoretical knowledge to practical applications in solar technology.</p>
+          <p>Through various online courses from prestigious institutions like Harvard, MIT, and Stanford, I've built a comprehensive skill set that includes advanced programming techniques, mathematical modeling, and cutting-edge AI/ML methodologies.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 shadow-sm">
+              <svg class="w-6 h-6 mb-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+              Mathematical Modeling
+            </div>
+            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 shadow-sm">
+              <svg class="w-6 h-6 mb-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              Statistical Analysis
+            </div>
+            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 shadow-sm">
+              <svg class="w-6 h-6 mb-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 2 3l10 0c1 0 2-1 2-3V7m-4 0h-2m-6 0H8a1 1 0 00-1 1v3M15 7a1 1 0 011 1v3"></path></svg>
+              Machine Learning
+            </div>
+            <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 shadow-sm">
+              <svg class="w-6 h-6 mb-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H3.512m3.761 0a9.001 9.001 0 0113.454 0"></path></svg>
+              Data Visualization
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <a href="https://github.com/SelloP28" target="_blank" class="btn bg-gray-800 text-white dark:bg-gray-700 hover:bg-gray-900">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.575C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
             </a>
-            
-            <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" target="_blank" rel="noopener noreferrer" 
-               class="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <span>LinkedIn</span>
+            <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107" target="_blank" class="btn bg-blue-600 text-white hover:bg-blue-700">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zm-3 19h-4v-4h-2v4H8v-8h2v4h2v-4h4v8zM10 9a2 2 0 110-4 2 2 0 010 4zm6 6h-4v-2h4v2z"/></svg>
+              LinkedIn
             </a>
           </div>
         </div>
-        
-        <div>
-          <!-- Skills Chart -->
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-            <h3 class="text-xl font-semibold mb-6 text-center text-gray-900 dark:text-white">Technical Skills</h3>
-            <div class="h-80 w-full">
-              <canvas id="skillsChart"></canvas>
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-semibold mb-6 text-center md:text-left">Technical Proficiency</h3>
+          <div class="h-80 md:h-96">
+            <canvas id="skillsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">Education Journey</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="card p-6 animate-on-scroll">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex-center text-blue-600 dark:text-blue-400 font-bold text-xl">U</div>
+            <div>
+              <h3 class="font-semibold">BSc in Applied Mathematics and Computer Science</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">University of South Africa (UNISA)</p>
+              <p class="text-sm text-gray-500 dark:text-gray-500">2024 - Expected 2028</p>
+              <p class="text-sm text-gray-500 dark:text-gray-500">Currently Second Year</p>
+            </div>
+          </div>
+          <button class="open-modal btn bg-blue-600 text-white w-full mt-4" data-modal="academic-record-unisa">View Record</button>
+        </div>
+        <div class="card p-6 animate-on-scroll">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex-center text-purple-600 dark:text-purple-400 font-bold text-xl">UP</div>
+            <div>
+              <h3 class="font-semibold">BSc in Physics (Incomplete)</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">University of Pretoria</p>
+              <p class="text-sm text-gray-500 dark:text-gray-500">2021</p>
+              <p class="text-sm text-gray-500 dark:text-gray-500">Transferred to focus on Data Science</p>
+            </div>
+          </div>
+          <button class="open-modal btn bg-purple-600 text-white w-full mt-4" data-modal="academic-record-up">View Record</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals for Academic Records -->
+  <div id="academic-record-unisa" class="modal fixed inset-0 bg-black/50 flex-center hidden z-50 p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-xl w-full max-w-4xl h-4/5 max-h-[90vh] overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+        <h3 class="text-lg font-semibold">UNISA Academic Record</h3>
+        <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">&times;</button>
+      </div>
+      <div class="pdf-container h-[calc(100%-3rem)]"></div>
+    </div>
+  </div>
+
+  <div id="academic-record-up" class="modal fixed inset-0 bg-black/50 flex-center hidden z-50 p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-xl w-full max-w-4xl h-4/5 max-h-[90vh] overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+        <h3 class="text-lg font-semibold">UP Academic Record</h3>
+        <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">&times;</button>
+      </div>
+      <div class="pdf-container h-[calc(100%-3rem)]"></div>
+    </div>
+  </div>
+
+  <!-- Experience & Skills Section -->
+  <section id="experience" class="py-20 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">Experience & Skills</h2>
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-semibold mb-6">Core Competencies</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="card-plain bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+              <h4 class="font-medium mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                Programming Languages
+              </h4>
+              <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                <li>Python <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+                <li>R <span class="text-yellow-600 dark:text-yellow-400">Intermediate</span></li>
+                <li>C++ <span class="text-yellow-600 dark:text-yellow-400">Intermediate</span></li>
+                <li>JavaScript <span class="text-yellow-600 dark:text-yellow-400">Intermediate</span></li>
+              </ul>
+            </div>
+            <div class="card-plain bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+              <h4 class="font-medium mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-4 1m19-1l-4-1-.75-3m-3.5-4.5h.008m-3.5 0h.008m-3.5 0h.008m-3.5 0h.008M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Data Science & ML
+              </h4>
+              <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                <li>Scikit-learn <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+                <li>Pandas/NumPy <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+                <li>TensorFlow <span class="text-yellow-600 dark:text-yellow-400">Intermediate</span></li>
+                <li>Statistical Analysis <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+              </ul>
+            </div>
+            <div class="card-plain bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+              <h4 class="font-medium mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                Mathematics & Tools
+              </h4>
+              <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                <li>Linear Algebra <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+                <li>Calculus <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+                <li>Git/GitHub <span class="text-yellow-600 dark:text-yellow-400">Intermediate</span></li>
+                <li>Jupyter Notebooks <span class="text-green-600 dark:text-green-400">Advanced</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-semibold mb-6">Professional Experience</h3>
+          <div class="space-y-8">
+            <div class="relative pl-6 before:absolute before:left-2 before:top-0 before:bottom-0 before:w-px before:bg-gray-200 dark:before:bg-gray-700">
+              <div class="relative pb-8">
+                <div class="absolute left-0 w-4 h-4 rounded-full bg-blue-600 -ml-2 mt-1"></div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                  <h4 class="font-medium">Software Developer (Co-founder)</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Moon Core Digital</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-500">August 2023 - March 2025</p>
+                  <ul class="list-disc pl-4 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                    <li>Co-founded a tech start-up specializing in website development, 3D modeling, and digital marketing solutions</li>
+                    <li>Involved in end-to-end project development, from client consultation to deployment</li>
+                    <li>Managed a cross-functional team and engineered scalable web applications using React and Node.js</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="relative pb-8">
+                <div class="absolute left-0 w-4 h-4 rounded-full bg-blue-600 -ml-2 mt-1"></div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                  <h4 class="font-medium">Web Developer</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Zosi Group</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-500">August 2023 - November 2023</p>
+                  <ul class="list-disc pl-4 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                    <li>Collaborated on the design and development of Zosi Group’s corporate website</li>
+                    <li>Implemented responsive web designs using HTML, CSS, and JavaScript</li>
+                    <li>Conducted rigorous testing and debugging to ensure a secure, user-friendly platform</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute left-0 w-4 h-4 rounded-full bg-blue-600 -ml-2 mt-1"></div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                  <h4 class="font-medium">Certified Solar PV Specialist</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Solar PV GreenCard Programme - Nepoworx</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-500">June 2025 - July 2025 (Qualified August 2025)</p>
+                  <ul class="list-disc pl-4 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                    <li>Completed comprehensive training in solar PV system design, installations, and component functionality (panels, inverters, batteries)</li>
+                    <li>Gained expertise in Safety, Health, and Environment (SHE) standards for solar projects</li>
+                    <li>Applied knowledge to optimize PV systems through data analysis and modeling</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Education Section -->
-      <div class="mt-16">
-        <h3 class="text-2xl font-semibold mb-8 text-center text-gray-900 dark:text-white">Education</h3>
-        <div class="space-y-4">
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div>
-                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">BSc in Applied Mathematics and Computer Science</h4>
-                <p class="text-gray-600 dark:text-gray-300">University of South Africa (UNISA)</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Expected 2028</p>
-              </div>
-              <button class="open-modal mt-4 md:mt-0 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg transition-colors" data-modal="academic-record-unisa">
-                View Record
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center">My Projects</h2>
+      <div class="carousel relative overflow-hidden">
+        <div class="carousel-inner flex transition-transform duration-500 ease-in-out">
+          <div class="carousel-item min-w-full p-4">
+            <div class="card p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl">
+              <h3 class="text-xl font-semibold mb-4">Solar Panel Performance Prediction using ANN</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Developed a machine learning model in Python to predict MPPT voltage and power for solar panels based on environmental factors like irradiance and temperature.</p>
+              <ul class="list-disc pl-4 mb-4 text-sm text-gray-600 dark:text-gray-300">
+                <li>Used TensorFlow/Keras for the ANN model, Pandas for data processing, Matplotlib for visualizations</li>
+                <li>Performed data pre-processing with StandardScaler and trained on historical solar dataset</li>
+                <li>Created 3D visualizations to illustrate power variations, providing insights for renewable energy software optimization</li>
+              </ul>
+              <a href="#" class="btn bg-blue-600 text-white">View Project</a>
+            </div>
+          </div>
+          <div class="carousel-item min-w-full p-4">
+            <div class="card p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl">
+              <h3 class="text-xl font-semibold mb-4">Solar Energy Output Forecaster</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Built a web-based tool for predicting solar PV energy output using ANN regression and Forecast.Solar API.</p>
+              <ul class="list-disc pl-4 mb-4 text-sm text-gray-600 dark:text-gray-300">
+                <li>Developed with Python, Streamlit for the UI, TensorFlow for ML, integrated APIs</li>
+                <li>Features user inputs for location and panel parameters, with Matplotlib visualizations comparing ML and API forecasts</li>
+                <li>Deployed on Streamlit Community Cloud, showcasing full-stack development for renewable energy applications</li>
+              </ul>
+              <a href="#" class="btn bg-blue-600 text-white">View Project</a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 p-2 rounded-r-lg shadow">‹</button>
+        <button class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 p-2 rounded-l-lg shadow">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="py-20 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 text-center">Resume & CV</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">Download my complete resume or view it online to learn more about my background and qualifications.</p>
+      <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+        <div class="h-96 rounded-xl overflow-hidden shadow-lg">
+          <div id="resume-container" class="w-full h-full"></div>
+        </div>
+        <div>
+          <div class="card p-6 mb-6">
+            <h3 class="font-semibold mb-2">Sello Phakoe - CV</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Data Scientist & AI/ML Engineer</p>
+            <p class="text-sm text-gray-500 dark:text-gray-500">Last Updated: January 2025</p>
+            <div class="flex gap-4 mt-4">
+              <a href="S-Phakoe-CV-UPDATED.pdf" download class="btn bg-blue-600 text-white flex-1">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download PDF
+              </a>
+              <button onclick="window.print()" class="btn border border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 flex-1">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                Print
               </button>
             </div>
           </div>
-          
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div>
-                <h4 class="text-lg font-semibold text-gray-900 dark:text-white">BSc in Physics (Incomplete)</h4>
-                <p class="text-gray-600 dark:text-gray-300">University of Pretoria</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">2021</p>
-              </div>
-              <button class="open-modal mt-4 md:mt-0 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg transition-colors" data-modal="academic-record-up">
-                View Record
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Academic Record Modals -->
-      <div id="academic-record-unisa" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-11/12 md:w-3/4 h-3/4 max-w-4xl">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">UNISA Academic Record</h3>
-            <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">&times;</button>
-          </div>
-          <div class="pdf-container w-full h-full bg-gray-100 dark:bg-gray-700 rounded"></div>
-        </div>
-      </div>
-
-      <div id="academic-record-up" class="modal fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-11/12 md:w-3/4 h-3/4 max-w-4xl">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">UP Academic Record</h3>
-            <button class="close-modal text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl">&times;</button>
-          </div>
-          <div class="pdf-container w-full h-full bg-gray-100 dark:bg-gray-700 rounded"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Featured Projects</h2>
-          <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <!-- Zosi Group Project -->
-          <div class="bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-6 hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Zosi Group Corporate Website</h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-              Designed and developed a comprehensive corporate website featuring enhanced functionality, responsive design, and seamless API integration.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">HTML5</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">CSS3</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">JavaScript</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">APIs</span>
-            </div>
-            <button class="w-full bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg transition-colors">
-              View Project
-            </button>
-          </div>
-
-          <!-- Data Science Project Placeholder -->
-          <div class="bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-6 hover:shadow-lg transition-shadow opacity-75">
-            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Machine Learning Portfolio</h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-              A collection of machine learning projects demonstrating proficiency in data preprocessing, model development, and statistical analysis.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">Python</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">Scikit-learn</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full">Pandas</span>
-            </div>
-            <button class="w-full bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed" disabled>
-              Coming Soon
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications & Courses Section -->
-    <section id="courses" class="py-20 px-4 max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Certifications & Courses</h2>
-        <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
-      </div>
-
-      <!-- Course Categories -->
-      <div class="space-y-12">
-        <!-- Harvard CS50 -->
-        <div>
-          <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-            <span class="w-8 h-8 bg-red-600 text-white rounded mr-3 flex items-center justify-center text-sm font-bold">H</span>
-            Harvard CS50 Courses
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Python Programming</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">In Progress</p>
-              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                <div class="bg-gray-600 h-2 rounded-full" style="width: 50%"></div>
-              </div>
-            </div>
-            
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Programming with R</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">In Progress</p>
-              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                <div class="bg-gray-600 h-2 rounded-full" style="width: 40%"></div>
-              </div>
-            </div>
-
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">AI with Python</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Starting Soon</p>
-              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                <div class="bg-gray-600 h-2 rounded-full" style="width: 0%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kaggle Learn -->
-        <div>
-          <h3 class="text-xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-            <span class="w-8 h-8 bg-blue-500 text-white rounded mr-3 flex items-center justify-center text-sm font-bold">K</span>
-            Kaggle Learn
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 border-l-4 border-l-green-500">
-              <div class="flex justify-between items-start mb-2">
-                <h4 class="font-semibold text-gray-900 dark:text-white">Machine Learning</h4>
-                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded-full">Completed</span>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">2025</p>
-              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
-              </div>
-            </div>
-
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 border-l-4 border-l-green-500">
-              <div class="flex justify-between items-start mb-2">
-                <h4 class="font-semibold text-gray-900 dark:text-white">Deep Learning</h4>
-                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded-full">Completed</span>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">2025</p>
-              <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Resume</h2>
-          <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
-        </div>
-        
-        <div class="bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 p-6">
-          <div id="resume-container" class="w-full h-[800px] bg-gray-100 dark:bg-gray-600 rounded-lg">
-            <!-- PDF will be embedded here -->
-          </div>
-          
-          <div class="flex justify-center mt-6">
-            <a href="resources/records/S-Phakoe-CV.pdf" download 
-               class="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg transition-colors font-medium">
-              Download Resume
+          <div class="text-center">
+            <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Need a different format or have questions about my experience?</p>
+            <a href="#contact" class="btn bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md hover:shadow-lg">
+              Get In Touch
             </a>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Get In Touch</h2>
-        <div class="w-16 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 text-center animate-on-scroll">
+        <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-700 shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">2+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Years Experience</div>
+        </div>
+        <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-700 shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">7+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Certifications</div>
+        </div>
+        <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-700 shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Projects</div>
+        </div>
+        <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-700 shadow-sm">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">8+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Technologies</div>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-8">
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Contact Info -->
-          <div class="space-y-6">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Contact Information</h3>
-            
-            <div class="flex items-center space-x-4">
-              <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 text-center">Let's Connect</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">I'm always excited to discuss new opportunities, collaborate on interesting projects, or simply connect with fellow professionals in the data science and AI community.</p>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-8 animate-on-scroll">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <h4 class="font-medium">Email</h4>
               </div>
-              <div>
-                <h4 class="font-medium text-gray-900 dark:text-white">Email</h4>
-                <a href="mailto:u13238940@tuks.co.za" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                  u13238940@tuks.co.za
-                </a>
-              </div>
+              <p class="text-sm">u13238940@tuks.co.za</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Best way to reach me for professional inquiries</p>
             </div>
-
-            <div class="flex items-center space-x-4">
-              <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
+            <div class="p-4 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <h4 class="font-medium">Location</h4>
               </div>
-              <div>
-                <h4 class="font-medium text-gray-900 dark:text-white">Location</h4>
-                <p class="text-gray-600 dark:text-gray-400">Pretoria, South Africa</p>
-              </div>
+              <p class="text-sm">Vosloorus, Gauteng</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Open to remote work and relocation opportunities</p>
             </div>
-
-            <div class="pt-4">
-              <div class="flex items-center space-x-2 mb-2">
-                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span class="text-sm font-medium text-green-700 dark:text-green-400">Available for opportunities</span>
+            <div class="p-4 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                <h4 class="font-medium">Phone</h4>
               </div>
-              <p class="text-gray-600 dark:text-gray-400 text-sm">
-                Currently seeking entry-level positions in data science and machine learning.
-              </p>
+              <p class="text-sm">+27 73 125 0723</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Available for calls during business hours</p>
             </div>
           </div>
-
-          <!-- Contact Form -->
           <div>
-            <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Send a Message</h3>
-            <form class="space-y-4" id="contact-form">
+            <h4 class="font-medium mb-4">Current Status</h4>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Available for new opportunities</li>
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Open to freelance projects</li>
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Interested in remote work</li>
+              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Looking for mentorship opportunities</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-medium mb-4">Connect With Me</h4>
+            <div class="flex gap-4">
+              <a href="https://github.com/SelloP28" target="_blank" class="btn bg-gray-800 text-white dark:bg-gray-700 hover:bg-gray-900 flex-1 justify-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.575C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107" target="_blank" class="btn bg-blue-600 text-white hover:bg-blue-700 flex-1 justify-center">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zm-3 19h-4v-4h-2v4H8v-8h2v4h2v-4h4v8zM10 9a2 2 0 110-4 2 2 0 010 4zm6 6h-4v-2h4v2z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="animate-on-scroll">
+          <h3 class="text-xl font-semibold mb-6">Send a Message</h3>
+          <form id="contact-form" class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
               <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-                <input type="text" id="name" name="name" required 
-                       class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors">
+                <label for="name" class="block text-sm font-medium mb-1">Full Name *</label>
+                <input type="text" id="name" name="name" required class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-blue-600 dark:focus:border-blue-400 outline-none transition-colors">
               </div>
-              
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-                <input type="email" id="email" name="email" required 
-                       class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors">
+                <label for="email" class="block text-sm font-medium mb-1">Email Address *</label>
+                <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-blue-600 dark:focus:border-blue-400 outline-none transition-colors">
               </div>
-              
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
-                <textarea id="message" name="message" rows="4" required 
-                          class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors resize-none"></textarea>
-              </div>
-              
-              <button type="submit" 
-                      class="w-full bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 py-3 px-6 rounded-lg transition-colors font-medium">
-                Send Message
-              </button>
-            </form>
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
+              <input type="text" id="subject" name="subject" class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-blue-600 dark:focus:border-blue-400 outline-none transition-colors">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1">Message *</label>
+              <textarea id="message" name="message" required rows="4" class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-blue-600 dark:focus:border-blue-400 outline-none transition-colors"></textarea>
+            </div>
+            <div class="flex items-center gap-2 text-sm">
+              <input type="checkbox" id="consent" required class="rounded border-gray-300 dark:border-gray-600 text-blue-600 focus:ring-blue-500 dark:bg-gray-800">
+              <label for="consent">I agree to the processing of my personal data for the purpose of responding to my inquiry. *</label>
+            </div>
+            <button type="submit" class="btn bg-gradient-to-r from-blue-600 to-purple-600 text-white w-full shadow-md hover:shadow-lg">Send Message</button>
+          </form>
+          <div class="mt-6 p-4 rounded-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm text-center">
+            <svg class="w-6 h-6 mx-auto mb-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <h4 class="font-medium mb-1">Quick Response</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-300">I typically respond to messages within 24 hours during weekdays. For urgent matters, feel free to call me directly.</p>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 dark:bg-gray-800 text-white py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <div class="flex justify-center space-x-6 mb-4">
-        <a href="https://github.com/SelloP28" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
+  <footer class="py-8 bg-gray-800 text-gray-300">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <a href="#" class="flex items-center justify-center md:justify-start gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex-center text-white font-bold">SP</div>
+          <span class="font-semibold">Sello Phakoe</span>
         </a>
-        <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-          </svg>
+        <p class="text-sm">Data Scientist & AI/ML Engineer passionate about transforming data into insights and building intelligent solutions.</p>
+      </div>
+      <div>
+        <h4 class="font-medium mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="#experience" class="hover:text-white transition-colors">Experience</a></li>
+          <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
+          <li><a href="#education" class="hover:text-white transition-colors">Education</a></li>
+          <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-medium mb-4">Get In Touch</h4>
+        <ul class="space-y-2 text-sm">
+          <li>📧 u13238940@tuks.co.za</li>
+          <li>📱 +27 73 125 0723</li>
+          <li>📍 Vosloorus, Gauteng, SA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm">
+      <div class="flex gap-4 mb-4 md:mb-0">
+        <a href="https://github.com/SelloP28" target="_blank" class="hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.575C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sello-phakoe-8375b6107" target="_blank" class="hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zm-3 19h-4v-4h-2v4H8v-8h2v4h2v-4h4v8zM10 9a2 2 0 110-4 2 2 0 010 4zm6 6h-4v-2h4v2z"/></svg>
         </a>
       </div>
-      <p class="text-gray-400">&copy; 2025 Sello Phakoe. All rights reserved.</p>
+      <p>© 2025 Sello Phakoe. All rights reserved.</p>
+      <p>Built with ❤️ and lots of ☕</p>
     </div>
   </footer>
 
-  <!-- Custom scripts -->
-  <script src="js/portfolio.js"></script>
+  <script src="portfolio.js"></script>
 </body>
 </html>
