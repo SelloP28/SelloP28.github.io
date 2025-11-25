@@ -121,7 +121,7 @@ function initializeCarousel() {
     carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
     indicators.forEach((ind, idx) => {
       ind.classList.toggle('bg-blue-600', idx === currentSlide);
-      ind.classList.toggle('bg-gray-300', idx !== currentSlide);
+      ind.classList.toggle('bg-gray-300', idx !== currentSlide && !document.documentElement.classList.contains('dark'));
       ind.classList.toggle('dark:bg-gray-600', idx !== currentSlide);
     });
   }
@@ -154,7 +154,7 @@ function initializeCarousel() {
   carousel.addEventListener('touchend', (e) => {
     const diffX = startX - e.changedTouches[0].clientX;
     if (Math.abs(diffX) > 50) {
-      diffX > 0 ? (currentSlide = (currentSlide + 1) % totalSlides) : (currentSlide = (currentSlide - 1 + totalSlides) % totalSlides);
+      currentSlide = diffX > 0 ? (currentSlide + 1) % totalSlides : (currentSlide - 1 + totalSlides) % totalSlides;
       updateCarousel();
     }
   });
@@ -184,7 +184,7 @@ function initializeScrollAnimations() {
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 }
 
-// Contact Form (Simulated)
+// Contact Form
 function initializeContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
@@ -193,7 +193,7 @@ function initializeContactForm() {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Sending...';
+    submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Sending...';
     submitBtn.disabled = true;
     
     try {
@@ -212,7 +212,8 @@ function initializeContactForm() {
 // Notification System
 function showNotification(message, type = 'info', duration = 5000) {
   const notification = document.createElement('div');
-  notification.className = `notification bg-${type}-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-3`;
+  const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500' };
+  notification.className = `notification ${colors[type]} text-white p-4 rounded-lg shadow-lg flex items-center gap-3`;
   notification.innerHTML = `<span>${message}</span><button onclick="this.parentElement.remove()">X</button>`;
   document.body.appendChild(notification);
   setTimeout(() => notification.classList.add('show'), 100);
@@ -237,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeSmoothScrolling();
   initializeScrollAnimations();
   initializeContactForm();
-  PDFObject.embed('resume.pdf', '#resume-container'); // Added for resume embed
+  PDFObject.embed('resume.pdf', '#resume-container');
   setTimeout(() => document.body.classList.add('loaded'), 100);
 });
 

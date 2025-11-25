@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
@@ -41,7 +41,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
           </svg>
         </button>
-        <button id="mobileMenuToggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <button id="mobileMenuToggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle mobile menu">
           <svg class="w-6 h-6 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -53,7 +53,7 @@
     </div>
   </header>
 
-  <!-- Hero Section (Added profile photo) -->
+  <!-- Hero Section -->
   <section id="home" class="min-h-screen flex items-center pt-20 pb-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
     <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-center lg:text-left animate-on-scroll">
@@ -126,7 +126,7 @@
     </div>
   </section>
 
-  <!-- Projects Section (Added images to carousel) -->
+  <!-- Projects Section -->
   <section id="projects" class="py-20 bg-white dark:bg-gray-800">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
@@ -195,7 +195,7 @@
     </div>
   </section>
 
-  <!-- Certifications Section (New addition) -->
+  <!-- Certifications Section -->
   <section id="certifications" class="py-20 bg-white dark:bg-gray-800">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold mb-12 text-center">Certifications</h2>
@@ -203,10 +203,9 @@
         <div class="card p-6 animate-on-scroll">
           <h3 class="text-xl font-semibold mb-2">Solar PV GreenCard</h3>
           <p class="text-blue-600 dark:text-blue-400 mb-4">Nepoworx | 2025</p>
-          <img src="certificate-screenshot.jpg" alt="PV GreenCard Certificate" class="rounded-lg shadow-md w-full" loading="lazy"> <!-- Replace with actual path/screenshot -->
+          <img src="images/certificate.jpg" alt="PV GreenCard Certificate" class="rounded-lg shadow-md w-full" loading="lazy">
           <p class="text-gray-600 dark:text-gray-300 mt-4">Comprehensive training in solar PV design, installation, and safety.</p>
         </div>
-        <!-- Add more certifications from CV if needed -->
       </div>
     </div>
   </section>
@@ -286,7 +285,7 @@
                 </label>
               </div>
               
-              <button type="submit" class="btn bg-gradient-to-r from-blue-600 to-purple-600 text-white w-full shadow-lg hover:shadow-xl">
+              <button type="submit" class="btn bg-gradient-to-r from-blue-600 to-purple-600 text-white w-full shadow-lg hover:shadow-xl" aria-label="Submit form">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                 </svg>
@@ -351,6 +350,6 @@
     </div>
   </footer>
 
-  <script src="portfolio.js"></script>
+  <script src="js/portfolio.js"></script>
 </body>
 </html>
