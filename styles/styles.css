@@ -147,6 +147,15 @@ header {
   padding: 1rem;
 }
 
+.carousel-item img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.05);
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
