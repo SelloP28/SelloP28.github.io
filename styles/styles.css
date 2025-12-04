@@ -190,6 +190,23 @@ header {
   right: 1rem;
 }
 
+.carousel-item .card {
+  transition: transform 0.3s ease;
+}
+
+.carousel-item .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.indicator {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.indicator.bg-blue-600 {
+  transform: scale(1.2);
+}
+
 /* Animations */
 .animate-on-scroll {
   opacity: 0;
