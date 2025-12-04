@@ -224,7 +224,7 @@ function showNotification(message, type = 'info', duration = 5000) {
 function downloadResume() {
   const a = document.createElement('a');
   a.href = 'resources/records/S-Phakoe-CV.pdf';
-  a.download = 'Sello_Phakoe_CV_2025.pdf';
+  a.download = 'S-Phakoe-CV.pdf';
   a.click();
   showNotification('CV downloaded!', 'success');
 }
