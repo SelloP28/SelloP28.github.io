@@ -6,18 +6,18 @@ function initializeDarkMode() {
   const darkModeToggle = document.getElementById('darkModeToggle');
   const sunIcon = darkModeToggle.querySelector('.sun-icon');
   const moonIcon = darkModeToggle.querySelector('.moon-icon');
-
-  const currentTheme = localStorage.getItem('theme') ||
+  
+  const currentTheme = localStorage.getItem('theme') || 
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
+  
   applyTheme(currentTheme);
-
+  
   darkModeToggle.addEventListener('click', () => {
     const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
     applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   });
-
+  
   function applyTheme(theme) {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     sunIcon.classList.toggle('hidden', theme === 'dark');
@@ -32,14 +32,14 @@ function initializeMobileMenu() {
   const navMenu = document.querySelector('.nav-menu');
   const hamburgerIcon = mobileMenuToggle.querySelector('.hamburger-icon');
   const closeIcon = mobileMenuToggle.querySelector('.close-icon');
-
+  
   mobileMenuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     hamburgerIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
     document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
   });
-
+  
   navMenu.addEventListener('click', (e) => {
     if (e.target.matches('a[href^="#"]')) {
       navMenu.classList.remove('active');
@@ -54,9 +54,9 @@ function initializeMobileMenu() {
 function initializeSkillsChart() {
   const ctx = document.getElementById('skillsChart');
   if (!ctx) return;
-
+  
   const isDark = document.documentElement.classList.contains('dark');
-
+  
   skillsChart = new Chart(ctx, {
     type: 'radar',
     data: {
@@ -95,17 +95,17 @@ function initializeSkillsChart() {
 
 function updateChartTheme(isDark) {
   if (!skillsChart) return;
-
+  
   const textColor = isDark ? '#f9fafb' : '#374151';
   const gridColor = isDark ? '#374151' : '#e5e7eb';
-
+  
   skillsChart.options.plugins.legend.labels.color = textColor;
   skillsChart.options.plugins.tooltip.backgroundColor = isDark ? '#1f2937' : '#ffffff';
   skillsChart.options.scales.r.ticks.color = isDark ? '#9ca3af' : '#6b7280';
   skillsChart.options.scales.r.grid.color = gridColor;
   skillsChart.options.scales.r.angleLines.color = gridColor;
   skillsChart.options.scales.r.pointLabels.color = textColor;
-
+  
   skillsChart.update();
 }
 
@@ -116,7 +116,7 @@ function initializeCarousel() {
   const nextBtn = document.getElementById('nextBtn');
   const indicators = document.querySelectorAll('.indicator');
   const totalSlides = carousel.children.length;
-
+  
   function updateCarousel() {
     carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
     indicators.forEach((ind, idx) => {
@@ -125,29 +125,29 @@ function initializeCarousel() {
       ind.classList.toggle('dark:bg-gray-600', idx !== currentSlide);
     });
   }
-
+  
   prevBtn.addEventListener('click', () => {
     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
     updateCarousel();
   });
-
+  
   nextBtn.addEventListener('click', () => {
     currentSlide = (currentSlide + 1) % totalSlides;
     updateCarousel();
   });
-
+  
   indicators.forEach((ind, idx) => {
     ind.addEventListener('click', () => {
       currentSlide = idx;
       updateCarousel();
     });
   });
-
+  
   setInterval(() => {
     currentSlide = (currentSlide + 1) % totalSlides;
     updateCarousel();
   }, 8000);
-
+  
   // Touch support
   let startX = 0;
   carousel.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
@@ -180,7 +180,7 @@ function initializeScrollAnimations() {
       if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
     });
   }, { threshold: 0.1 });
-
+  
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 }
 
@@ -188,14 +188,14 @@ function initializeScrollAnimations() {
 function initializeContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
-
+  
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Sending...';
     submitBtn.disabled = true;
-
+    
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       showNotification('Message sent successfully!', 'success');
@@ -223,7 +223,7 @@ function showNotification(message, type = 'info', duration = 5000) {
 // Resume Download
 function downloadResume() {
   const a = document.createElement('a');
-  a.href = 'resume.pdf';
+  a.href = 'resources/images/S-Phakoe-CV.pdf';
   a.download = 'Sello_Phakoe_CV_2025.pdf';
   a.click();
   showNotification('CV downloaded!', 'success');
@@ -238,8 +238,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeSmoothScrolling();
   initializeScrollAnimations();
   initializeContactForm();
-  PDFObject.embed('resume.pdf', '#resume-container');
-  setTimeout(() => document.body.classList.add('loaded'), 100);
+  const embedSuccess = PDFObject.embed('resources/images/S-Phakoe-CV.pdf', '#resume-container');
+  if (!embedSuccess) {
+    document.getElementById('resume-container').innerHTML = '<p>Failed to load PDF. Please download it instead.</p>';
+  }
 });
 
 // Resize Handler
