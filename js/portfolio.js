@@ -1,92 +1,151 @@
+// State
 let currentSlide = 0;
 let skillsChart = null;
+const particles = [];
 
-// Dark Mode Toggle
-function initializeDarkMode() {
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const sunIcon = darkModeToggle.querySelector('.sun-icon');
-  const moonIcon = darkModeToggle.querySelector('.moon-icon');
+// Dark Mode
+function initDarkMode() {
+  const toggle = document.getElementById('darkModeToggle');
+  const html = document.documentElement;
+  const sunIcon = toggle.querySelector('.sun-icon');
+  const moonIcon = toggle.querySelector('.moon-icon');
   
-  const currentTheme = localStorage.getItem('theme') || 
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const theme = localStorage.getItem('theme') || 
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   
-  applyTheme(currentTheme);
-  
-  darkModeToggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-    applyTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-  
-  function applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    sunIcon.classList.toggle('hidden', theme === 'dark');
-    moonIcon.classList.toggle('hidden', theme !== 'dark');
-    if (skillsChart) updateChartTheme(theme === 'dark');
+  if (theme === 'dark') {
+    html.classList.add('dark');
+    sunIcon.classList.add('hidden');
+    moonIcon.classList.remove('hidden');
   }
+  
+  toggle.addEventListener('click', () => {
+    const isDark = html.classList.toggle('dark');
+    sunIcon.classList.toggle('hidden');
+    moonIcon.classList.toggle('hidden');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    if (skillsChart) updateChartTheme(isDark);
+  });
 }
 
-// Mobile Menu Toggle
-function initializeMobileMenu() {
-  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-  const navMenu = document.querySelector('.nav-menu');
-  const hamburgerIcon = mobileMenuToggle.querySelector('.hamburger-icon');
-  const closeIcon = mobileMenuToggle.querySelector('.close-icon');
-  
-  mobileMenuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburgerIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+// Scroll Progress
+function initScrollProgress() {
+  const progress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    progress.style.width = scrolled + '%';
   });
+}
+
+// Loading Screen
+function hideLoadingScreen() {
+  const loading = document.getElementById('loadingScreen');
+  setTimeout(() => {
+    loading.classList.add('hidden');
+  }, 1000);
+}
+
+// Particles Animation
+function initParticles() {
+  const canvas = document.getElementById('particlesCanvas');
+  const ctx = canvas.getContext('2d');
   
-  navMenu.addEventListener('click', (e) => {
-    if (e.target.matches('a[href^="#"]')) {
-      navMenu.classList.remove('active');
-      hamburgerIcon.classList.remove('hidden');
-      closeIcon.classList.add('hidden');
-      document.body.style.overflow = '';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.speedY = Math.random() * 0.5 - 0.25;
     }
+    
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+    
+    draw() {
+      ctx.fillStyle = document.documentElement.classList.contains('dark') 
+        ? 'rgba(147, 197, 253, 0.5)' 
+        : 'rgba(59, 130, 246, 0.3)';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  
+  for (let i = 0; i < 50; i++) {
+    particles.push(new Particle());
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+  
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   });
 }
 
 // Skills Chart
-function initializeSkillsChart() {
+function initSkillsChart() {
   const ctx = document.getElementById('skillsChart');
   if (!ctx) return;
   
   const isDark = document.documentElement.classList.contains('dark');
+  const textColor = isDark ? '#f9fafb' : '#374151';
+  const gridColor = isDark ? '#374151' : '#e5e7eb';
   
   skillsChart = new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: ['Python', 'Machine Learning', 'TensorFlow/Keras', 'Data Analysis', 'Solar PV Systems', 'Web Development', 'Mathematics', 'Statistical Analysis'],
+      labels: ['Python', 'ML', 'TensorFlow', 'Data Analysis', 'Solar PV', 'Web Dev', 'Math', 'Stats'],
       datasets: [{
-        label: 'Proficiency Level (%)',
+        label: 'Proficiency (%)',
         data: [95, 88, 85, 90, 80, 82, 85, 87],
         backgroundColor: 'rgba(59, 130, 246, 0.2)',
-        borderColor: 'rgba(59, 130, 246, 1)',
-        borderWidth: 3,
-        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
-        pointBorderColor: '#ffffff',
-        pointRadius: 5
+        borderColor: '#3b82f6',
+        borderWidth: 2,
+        pointBackgroundColor: '#3b82f6',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 6
       }]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: 'bottom', labels: { color: isDark ? '#f9fafb' : '#374151' } },
-        tooltip: { backgroundColor: isDark ? '#1f2937' : '#ffffff', bodyColor: isDark ? '#f9fafb' : '#374151' }
+        legend: {
+          position: 'bottom',
+          labels: { color: textColor, font: { size: 11 } }
+        }
       },
       scales: {
         r: {
           beginAtZero: true,
           max: 100,
-          ticks: { color: isDark ? '#9ca3af' : '#6b7280' },
-          grid: { color: isDark ? '#374151' : '#e5e7eb' },
-          angleLines: { color: isDark ? '#374151' : '#e5e7eb' },
-          pointLabels: { color: isDark ? '#f9fafb' : '#374151' }
+          ticks: { stepSize: 25, color: textColor, backdropColor: 'transparent' },
+          grid: { color: gridColor },
+          angleLines: { color: gridColor },
+          pointLabels: { color: textColor, font: { size: 10 } }
         }
       }
     }
@@ -95,158 +154,139 @@ function initializeSkillsChart() {
 
 function updateChartTheme(isDark) {
   if (!skillsChart) return;
-  
   const textColor = isDark ? '#f9fafb' : '#374151';
   const gridColor = isDark ? '#374151' : '#e5e7eb';
   
   skillsChart.options.plugins.legend.labels.color = textColor;
-  skillsChart.options.plugins.tooltip.backgroundColor = isDark ? '#1f2937' : '#ffffff';
-  skillsChart.options.scales.r.ticks.color = isDark ? '#9ca3af' : '#6b7280';
+  skillsChart.options.scales.r.ticks.color = textColor;
   skillsChart.options.scales.r.grid.color = gridColor;
   skillsChart.options.scales.r.angleLines.color = gridColor;
   skillsChart.options.scales.r.pointLabels.color = textColor;
-  
-  skillsChart.update();
+  skillsChart.update('none');
 }
 
-// Carousel Functionality
-function initializeCarousel() {
+// Carousel
+function initCarousel() {
   const carousel = document.getElementById('projectCarousel');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const indicators = document.querySelectorAll('.indicator');
-  const totalSlides = carousel.children.length;
+  const dotsContainer = document.getElementById('carouselDots');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
   
   function updateCarousel() {
     carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    indicators.forEach((ind, idx) => {
-      ind.classList.toggle('bg-blue-600', idx === currentSlide);
-      ind.classList.toggle('bg-gray-300', idx !== currentSlide && !document.documentElement.classList.contains('dark'));
-      ind.classList.toggle('dark:bg-gray-600', idx !== currentSlide);
+    dotsContainer.querySelectorAll('button').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
     });
   }
   
-  prevBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  function goToSlide(n) {
+    currentSlide = (n + slides.length) % slides.length;
     updateCarousel();
-  });
+  }
   
-  nextBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  });
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
   
-  indicators.forEach((ind, idx) => {
-    ind.addEventListener('click', () => {
-      currentSlide = idx;
-      updateCarousel();
-    });
-  });
-  
-  setInterval(() => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  }, 8000);
+  // Auto-advance
+  setInterval(() => goToSlide(currentSlide + 1), 6000);
   
   // Touch support
   let startX = 0;
-  carousel.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
-  carousel.addEventListener('touchend', (e) => {
-    const diffX = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diffX) > 50) {
-      currentSlide = diffX > 0 ? (currentSlide + 1) % totalSlides : (currentSlide - 1 + totalSlides) % totalSlides;
-      updateCarousel();
-    }
+  carousel.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  carousel.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goToSlide(currentSlide + (diff > 0 ? 1 : -1));
   });
 }
 
-// Smooth Scrolling
-function initializeSmoothScrolling() {
+// Smooth Scroll
+function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', e => {
       e.preventDefault();
-      const targetId = link.getAttribute('href');
-      if (targetId === '#') return;
-      const target = document.querySelector(targetId);
-      if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
     });
   });
 }
 
-// Scroll Animations
-function initializeScrollAnimations() {
-  const observer = new IntersectionObserver((entries) => {
+// Intersection Observer for fade-in animations
+function initScrollAnimations() {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+      }
     });
   }, { threshold: 0.1 });
   
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }
 
 // Contact Form
-function initializeContactForm() {
+function initContactForm() {
   const form = document.getElementById('contactForm');
-  if (!form) return;
-  
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Sending...';
-    submitBtn.disabled = true;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
     
-    try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      showNotification('Message sent successfully!', 'success');
-      form.reset();
-    } catch {
-      showNotification('Failed to send message.', 'error');
-    } finally {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    }
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    
+    // Simulate sending
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    alert('Message sent! I\'ll get back to you soon.');
+    form.reset();
+    
+    btn.textContent = originalText;
+    btn.disabled = false;
   });
 }
 
-// Notification System
-function showNotification(message, type = 'info', duration = 5000) {
-  const notification = document.createElement('div');
-  const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500' };
-  notification.className = `notification ${colors[type]} text-white p-4 rounded-lg shadow-lg flex items-center gap-3`;
-  notification.innerHTML = `<span>${message}</span><button onclick="this.parentElement.remove()">X</button>`;
-  document.body.appendChild(notification);
-  setTimeout(() => notification.classList.add('show'), 100);
-  setTimeout(() => notification.remove(), duration);
+// Mobile Menu
+function initMobileMenu() {
+  const toggle = document.getElementById('mobileMenuToggle');
+  const nav = document.querySelector('nav');
+  
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+  
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => nav.classList.remove('active'));
+  });
 }
 
-// Resume Download
-function downloadResume() {
-  const a = document.createElement('a');
-  a.href = 'resume.pdf';
-  a.download = 'Sello_Phakoe_CV_2025.pdf';
-  a.click();
-  showNotification('CV downloaded!', 'success');
-}
-
-// Init on DOM Load
+// Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
-  initializeDarkMode();
-  initializeMobileMenu();
-  initializeSkillsChart();
-  initializeCarousel();
-  initializeSmoothScrolling();
-  initializeScrollAnimations();
-  initializeContactForm();
-  PDFObject.embed('resume.pdf', '#resume-container');
-  setTimeout(() => document.body.classList.add('loaded'), 100);
+  initDarkMode();
+  initScrollProgress();
+  initParticles();
+  initSkillsChart();
+  initCarousel();
+  initSmoothScroll();
+  initScrollAnimations();
+  initContactForm();
+  initMobileMenu();
+  hideLoadingScreen();
 });
 
-// Resize Handler
 window.addEventListener('resize', () => {
   if (skillsChart) skillsChart.resize();
 });
-
-// Global Functions
-window.downloadResume = downloadResume;
-window.showNotification = showNotification;
