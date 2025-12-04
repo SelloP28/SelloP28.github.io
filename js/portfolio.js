@@ -223,7 +223,7 @@ function showNotification(message, type = 'info', duration = 5000) {
 // Resume Download
 function downloadResume() {
   const a = document.createElement('a');
-  a.href = 'resources/images/S-Phakoe-CV.pdf';
+  a.href = 'resources/records/S-Phakoe-CV.pdf';
   a.download = 'Sello_Phakoe_CV_2025.pdf';
   a.click();
   showNotification('CV downloaded!', 'success');
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeSmoothScrolling();
   initializeScrollAnimations();
   initializeContactForm();
-  const embedSuccess = PDFObject.embed('resources/images/S-Phakoe-CV.pdf', '#resume-container');
+  const embedSuccess = PDFObject.embed('resources/records/S-Phakoe-CV.pdf', '#resume-container');
   if (!embedSuccess) {
     document.getElementById('resume-container').innerHTML = '<p>Failed to load PDF. Please download it instead.</p>';
   }
