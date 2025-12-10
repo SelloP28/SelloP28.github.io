@@ -188,24 +188,39 @@ function initializeScrollAnimations() {
 function initializeContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
-  
-  form.addEventListener('submit', async (e) => {
+
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Sending...';
+    submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Opening...';
     submitBtn.disabled = true;
-    
-    try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      showNotification('Message sent successfully!', 'success');
-      form.reset();
-    } catch {
-      showNotification('Failed to send message.', 'error');
-    } finally {
+
+    // Collect and validate form data
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const subject = form.subject.value.trim();
+    const message = form.message.value.trim();
+    if (!name || !email || !message || !form.consent.checked) {
+      showNotification('Please fill all required fields and agree to consent.', 'error');
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
+      return;
     }
+
+    // Format message
+    const formattedMessage = `From: ${name} (${email})\nSubject: ${subject}\nMessage: ${message}`;
+    const encodedMessage = encodeURIComponent(formattedMessage);
+    const phoneNumber = '27716285999'; // Your WhatsApp number in international format
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp or fallback to email
+    window.open(waUrl, '_blank') || window.open(`mailto:u13238940@tuks.co.za?subject=${encodeURIComponent(subject)}&body=${encodedMessage}`, '_blank');
+
+    showNotification('Opening WhatsApp...', 'success');
+    form.reset();
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
   });
 }
 
