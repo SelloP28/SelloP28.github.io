@@ -240,7 +240,9 @@ function downloadResume() {
   const a = document.createElement('a');
   a.href = 'resources/records/S-Phakoe-CV.pdf';
   a.download = 'S-Phakoe-CV.pdf';
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
   showNotification('CV downloaded!', 'success');
 }
 

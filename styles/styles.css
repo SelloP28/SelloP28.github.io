@@ -239,13 +239,20 @@ header {
 /* PDF Container */
 .pdf-container {
   width: 100%;
-  height: 400px;
+  height: 400px; /* Default */
   border-radius: var(--border-radius-lg);
   background: #f8fafc;
+  overflow: hidden; /* Prevent overflow on mobile */
 }
 
 .dark .pdf-container {
   background: #0f172a;
+}
+
+@media (max-width: 768px) {
+  .pdf-container {
+    height: 300px; /* Smaller on mobile for better scrolling */
+  }
 }
 
 /* Chart Container */
