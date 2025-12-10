@@ -60,10 +60,10 @@ function initializeSkillsChart() {
   skillsChart = new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: ['Python', 'Machine Learning', 'TensorFlow/Keras', 'Data Analysis', 'Solar PV Systems', 'Web Development', 'Mathematics', 'Statistical Analysis'],
+      labels: ['Python', 'Machine Learning', 'TensorFlow/Keras', 'Data Analysis', 'Solar PV Systems', 'Web Development', 'Mathematics', 'Physics-informed ML'],
       datasets: [{
         label: 'Proficiency Level (%)',
-        data: [95, 88, 85, 90, 80, 82, 85, 87],
+        data: [88, 80, 75, 83, 80, 82, 85, 77],
         backgroundColor: 'rgba(59, 130, 246, 0.2)',
         borderColor: 'rgba(59, 130, 246, 1)',
         borderWidth: 3,
